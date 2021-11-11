@@ -2,11 +2,16 @@
 
 {% block body %}
 <header>
-  <div class="navbar navbar-light bg-light my-3 navbar-expand-lg">
-      <div class="container">
-          {{ knp_menu_render('main') }}
-          <h1>OK</h1>
+  <div class="navbar navbar-light bg-light navbar-expand-lg">
+    <div class="container">
+      <div>
+        <span class="d-inline">
+          <i id="pizza-icon" class="fas fa-pizza-slice fa-3x pizza-icon"></i>
+        </span>
+        <span class="text-primary d-inline fs-1">Pizzerio's</span>
       </div>
+      {{ knp_menu_render('main') }}
+    </div>
   </div>
 </header>
 
