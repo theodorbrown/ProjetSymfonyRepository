@@ -22,6 +22,7 @@ class MenuBuilder
         $menu = $this->factory->createItem('root');
 
         $menu->addChild('Accueil', ['route' => 'home']);
+        $menu->addChild('Les Pizzas', ['route' => 'pizza_index']);
         // ... add more children
 
         return $menu;
