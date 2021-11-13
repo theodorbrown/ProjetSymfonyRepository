@@ -1,11 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends "front-layout.twig" %}
 
-{% block title %}New Pizza{% endblock %}
+{% block content %}
 
-{% block body %}
-    <h1>Create new Pizza</h1>
+    <h1 class="">Ajout d'une pizza</h1>
+    {% embed "decorator/_form.html.twig" %}
+        {% block formBody %}
+            {{ form_widget(form) }}
+        {% endblock %}
+    {% endembed %}
 
-    {{ include('pizza/_form.html.twig') }}
-
-    <a href="{{ path('pizza_index') }}">back to list</a>
 {% endblock %}

@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Pizza;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -14,7 +15,9 @@ class PizzaType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
-            ->add('created_at')
+            ->add('created_at', DateType::class, [
+                'widget' => 'single_text',
+            ])
             ->add('enabled')
         ;
     }

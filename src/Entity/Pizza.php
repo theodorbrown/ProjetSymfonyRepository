@@ -33,7 +33,7 @@ class Pizza
     private $created_at;
 
     /**
-     * @ORM\Column(type="smallint")
+     * @ORM\Column(type="boolean")
      */
     private $enabled;
 
@@ -78,12 +78,22 @@ class Pizza
         return $this;
     }
 
-    public function getEnabled(): ?int
+    /**
+     * Get the value of enabled
+     * 
+     * @return  bool
+     */ 
+    public function getEnabled(): ?bool
     {
         return $this->enabled;
     }
 
-    public function setEnabled(int $enabled): self
+    /**
+     * Set the value of enabled
+     *
+     * @return  self
+     */ 
+    public function setEnabled(bool $enabled): self
     {
         $this->enabled = $enabled;
 
