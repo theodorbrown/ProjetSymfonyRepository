@@ -2,7 +2,9 @@
 
 namespace App\Form;
 
+use App\Entity\Category;
 use App\Entity\Pizza;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,6 +21,10 @@ class PizzaType extends AbstractType
                 'widget' => 'single_text',
             ])
             ->add('enabled')
+            ->add('category', EntityType::class, [
+                'class' => Category::class,
+                'required'=> false,
+            ])
         ;
     }
 
