@@ -23,8 +23,8 @@ class MenuBuilder
 
         $menu->addChild('Accueil', ['route' => 'home']);
         $menu->addChild('Les Pizzas', ['route' => 'pizza_index']);
+        $menu->addChild('Les Catégories', ['route' => 'category_index']);
         // ... add more children
-
         return $menu;
     }
 }
