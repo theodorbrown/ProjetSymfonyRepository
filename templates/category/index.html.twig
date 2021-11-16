@@ -1,35 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends 'front-layout.twig' %}
 
-{% block title %}Category index{% endblock %}
+{% block title %}Pizza index{% endblock %}
 
-{% block body %}
-    <h1>Category index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
+{% block content %}
+    <h1>Liste des catégories</h1>
+    <div class="text-center">
+        <a href="{{ path('category_new') }}" class="btn btn-success m-1">Ajouter une catégorie</a>
+    </div>
+    <div class="card-group">
         {% for category in categories %}
-            <tr>
-                <td>{{ category.id }}</td>
-                <td>{{ category.name }}</td>
-                <td>
-                    <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
-                    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
-                </td>
-            </tr>
+            <div class="m-3">
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body align-self-center" style="height: 60px;">
+                        <h5 class="card-title" style="text-align-last: center;">{{category.name}}</h5>
+                    </div>
+                    <div class="card-body align-self-center">
+                        <a href="{{ path('category_edit',  {'id':category.id }) }}" class="btn btn-light"><i class="fas fa-edit"></i></a>
+                        <a href="{{ path('category_delete',  {'id':category.id }) }}" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                    </div>
+                </div>
+            </div>
         {% else %}
-            <tr>
-                <td colspan="3">no records found</td>
-            </tr>
+                <p>Aucunes catégories enregistrées</p>
         {% endfor %}
-        </tbody>
-    </table>
-
-    <a href="{{ path('category_new') }}">Create new</a>
+    </div>
 {% endblock %}

@@ -42,14 +42,6 @@ class PizzaController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'pizza_show', methods: ['GET'])]
-    public function show(Pizza $pizza): Response
-    {
-        return $this->render('pizza/show.html.twig', [
-            'pizza' => $pizza,
-        ]);
-    }
-
     #[Route('/{id}/edit', name: 'pizza_edit', methods: ['GET','POST'])]
     public function edit(Request $request, Pizza $pizza): Response
     {
@@ -68,15 +60,18 @@ class PizzaController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'pizza_delete', methods: ['POST'])]
+    #[Route('/{id}/delete', name: 'pizza_delete', methods: ['POST','GET'])]
     public function delete(Request $request, Pizza $pizza): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$pizza->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete'.$pizza->getId(), $request->request->get('token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($pizza);
             $entityManager->flush();
-        }
 
-        return $this->redirectToRoute('pizza_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('pizza_index', [], Response::HTTP_SEE_OTHER);
+        }
+        return $this->render("pizza/delete.html.twig", [
+            'entity' => $pizza
+        ]);
     }
 }
